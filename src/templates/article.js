@@ -65,6 +65,20 @@ const ArticleTitle = styled.h1`
   }
 `;
 
+const IframeContainer = styled.span`
+  padding-bottom: 56.25%; 
+  position: relative; 
+  display: block; 
+  width: 100%;
+
+  > iframe {
+    height: 100%;
+    width: 100%;
+    position: absolute; 
+    top: 0; 
+    left: 0;
+  }`
+
 const ArticleContentContainer = styled.section`
   padding: 32px 94px;
 
