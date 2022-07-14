@@ -1,7 +1,7 @@
 import React from 'react';
 import is from 'prop-types';
 import { graphql } from 'gatsby';
-import { BLOCKS } from '@contentful/rich-text-types';
+import { BLOCKS, INLINES } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import styled from '@emotion/styled';
 import Layout from './layout';
@@ -25,6 +25,31 @@ const rendererOptions = ({ locale = 'en-US' }) => ({
         );
       }
     },
+
+    [INLINES.HYPERLINK]: (node, children) => {
+      if (node.data.uri.indexOf('scribehow.com') !== -1) {
+         return (
+           <IframeContainer>
+             <iframe
+               src={node.data.uri}
+               frameBorder="0"
+               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture ; fullscreen"
+             />
+           </IframeContainer>
+         );
+    } else
+     return (
+       <a
+         href={node.data.uri}
+         target='_blank'
+         rel='noopener noreferrer'
+       >{children}</a>
+ 
+     );
+   }, 
+
+
+
   },
 });
 
