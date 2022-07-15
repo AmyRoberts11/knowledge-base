@@ -13,16 +13,6 @@ import SEO from '../components/seo';
 
 const rendererOptions = ({ locale = 'en-US' }) => ({
   renderNode: {
-
-    [INLINES.ENTRY_HYPERLINK]: (node) => {
-        return (
-          <a
-          href={node.data.target.uri}
-          target='_blank'
-          rel='noopener noreferrer'
-        >hello</a>
-        );
-   },
     [INLINES.HYPERLINK]: (node, children) => {
       if (node.data.uri.indexOf('scribehow.com') !== -1) {
          return (
