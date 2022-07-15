@@ -11,6 +11,14 @@ import SEO from '../components/seo';
 
 const rendererOptions = ({ locale = 'en-US' }) => ({
   renderNode: {
+    [INLINES.ENTRY_HYPERLINK]: (node, children) => {
+      // If you are using contentful.js client library, the referenced entry is resolved
+      // automatically and is available at `node.data.target`.
+      const referencedEntry = getEntryWithId(node.data.target.sys.id);
+
+      return <a href={`/${referencedEntry.fields.slug}`}>{children}</a>;
+    },
+
     [INLINES.HYPERLINK]: (node, children) => {
       if (node.data.uri.indexOf('scribehow.com') !== -1) {
          return (
@@ -22,17 +30,7 @@ const rendererOptions = ({ locale = 'en-US' }) => ({
              />
            </IframeContainer>
          );
-    } 
-    if (node.nodeType = 'entry-hyperlink') {
-      return (
-        <a
-        href={`/${node.data.target.fields.slug}/`}
-        target='_blank'
-        rel='noopener noreferrer'
-      >{children}</a>
-      );
- } 
-    else
+    } else
      return (
        <a
          href={node.data.uri}
@@ -59,6 +57,16 @@ const rendererOptions = ({ locale = 'en-US' }) => ({
     },
   },
 });
+
+function getEntryWithId(entryId) {
+  const mockEntry = {
+    fields: {
+      slug: 'entry-slug',
+    },
+  };
+
+  return mockEntry;
+}
 
 const ArticleTitle = styled.h1`
   margin-bottom: 32px;
