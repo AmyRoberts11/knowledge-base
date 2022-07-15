@@ -15,13 +15,12 @@ import SEO from '../components/seo';
 const rendererOptions = ({ locale = 'en-US' }) => ({
   renderNode: {
 
-    [INLINES.ENTRY_HYPERLINK]: (node) => {
+    [INLINES.ENTRY_HYPERLINK]: () => {
         return (
           <a
-          href={node.data}
           target='_blank'
           rel='noopener noreferrer'
-        >hello</a>
+        ></a>
         );
    },
     [INLINES.HYPERLINK]: (node, children) => {
