@@ -58,16 +58,6 @@ const rendererOptions = ({ locale = 'en-US' }) => ({
   },
 });
 
-function getEntryWithId(entryId) {
-  const mockEntry = {
-    fields: {
-      slug: 'entry-slug',
-    },
-  };
-
-  return mockEntry;
-}
-
 const ArticleTitle = styled.h1`
   margin-bottom: 32px;
 
