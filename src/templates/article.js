@@ -15,17 +15,9 @@ import SEO from '../components/seo';
 const rendererOptions = ({ locale = 'en-US' }) => ({
   renderNode: {
 
-    [INLINES.ENTRY_HYPERLINK]: () => {
-      // If you are using contentful.js client library, the referenced entry is resolved
-      // automatically and is available at `node.data.target`.
-      return (
-        <a
-        href={node.data.uri}
-        target='_blank'
-        rel='noopener noreferrer'
-      >{children}</a>
-      );
-    },
+    [INLINES.ENTRY_HYPERLINK]: (node) => {
+      return `<a href="/${node.data.target.fields.slug}">${node.content[0].value}</a>`;
+  },
 
    [INLINES.HYPERLINK]: (node, children) => {
       if (node.data.uri.indexOf('scribehow.com') !== -1) {
