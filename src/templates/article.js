@@ -9,6 +9,8 @@ import WhiteContainer from '../components/white-container';
 import Breadcrumb from '../components/breadcrumb';
 import SEO from '../components/seo';
 
+console.log(referencedEntry);
+
 const rendererOptions = ({ locale = 'en-US' }) => ({
   renderNode: {
     [INLINES.ENTRY_HYPERLINK]: (node, children) => {
@@ -18,6 +20,7 @@ const rendererOptions = ({ locale = 'en-US' }) => ({
 
       return <a href={`/${referencedEntry.fields.slug}`}>{children}</a>;
     },
+
 
     [INLINES.HYPERLINK]: (node, children) => {
       if (node.data.uri.indexOf('scribehow.com') !== -1) {
