@@ -15,7 +15,7 @@ const rendererOptions = ({ locale = 'en-US' }) => ({
       // If you are using contentful.js client library, the referenced entry is resolved
       // automatically and is available at `node.data.target`.
 
-      return <a href={`/${node.data.target.fields.slug}`}>{children}</a>;
+      return <a href={`/${node.data.target.data.fields.slug}`}>{children}</a>;
     },
 
     [INLINES.HYPERLINK]: (node, children) => {
