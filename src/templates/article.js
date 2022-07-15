@@ -18,10 +18,10 @@ const rendererOptions = ({ locale = 'en-US' }) => ({
     [INLINES.ENTRY_HYPERLINK]: (node) => {
         return (
           <a
-          href='google.com'
+          href={node.data.fields.slug}
           target='_blank'
           rel='noopener noreferrer'
-        >Hello!</a>
+        >{node.data.fields.title}</a>
         );
    },
     [INLINES.HYPERLINK]: (node, children) => {
