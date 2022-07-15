@@ -14,8 +14,9 @@ const rendererOptions = ({ locale = 'en-US' }) => ({
     [INLINES.ENTRY_HYPERLINK]: (node, children) => {
       // If you are using contentful.js client library, the referenced entry is resolved
       // automatically and is available at `node.data.target`.
+      const referencedEntry = getEntryWithId(node.data.target.sys.id);
 
-      return <a href={`/${node.data.target.data.fields.slug}`}>{children}</a>;
+      return <a href={`/${referencedEntry.fields.slug}`}>{children}</a>;
     },
 
     [INLINES.HYPERLINK]: (node, children) => {
@@ -57,7 +58,15 @@ const rendererOptions = ({ locale = 'en-US' }) => ({
   },
 });
 
+function getEntryWithId() {
+  const mockEntry = {
+    fields: {
+      slug: {slug},
+    },
+  };
 
+  return mockEntry;
+}
 
 const ArticleTitle = styled.h1`
   margin-bottom: 32px;
