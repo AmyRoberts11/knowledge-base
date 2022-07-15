@@ -18,7 +18,7 @@ const rendererOptions = ({ locale = 'en-US' }) => ({
     [INLINES.ENTRY_HYPERLINK]: (children) => {
         return (
           <a
-          href=''
+          href='google.com'
           target='_blank'
           rel='noopener noreferrer'
         >{children}</a>
