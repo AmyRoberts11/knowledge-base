@@ -9,7 +9,7 @@ import WhiteContainer from '../components/white-container';
 import Breadcrumb from '../components/breadcrumb';
 import SEO from '../components/seo';
 
-console.log(referencedEntry);
+
 
 const rendererOptions = ({ locale = 'en-US' }) => ({
   renderNode: {
@@ -60,6 +60,8 @@ const rendererOptions = ({ locale = 'en-US' }) => ({
     },
   },
 });
+
+console.log(referencedEntry);
 
 function getEntryWithId() {
   const mockEntry = {
