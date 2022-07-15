@@ -21,7 +21,7 @@ const rendererOptions = ({ locale = 'en-US' }) => ({
           href=''
           target='_blank'
           rel='noopener noreferrer'
-        >{node.data}</a>
+        >hello</a>
         );
    },
     [INLINES.HYPERLINK]: (node, children) => {
