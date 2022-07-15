@@ -26,7 +26,7 @@ const rendererOptions = ({ locale = 'en-US' }) => ({
     if (node.nodeType = 'entry-hyperlink') {
       return (
         <a
-        href={`/${article.category.slug}/${node.data.fields.slug}/`}
+        href={`/${node.data.fields.slug}/`}
         target='_blank'
         rel='noopener noreferrer'
       >{children}</a>
