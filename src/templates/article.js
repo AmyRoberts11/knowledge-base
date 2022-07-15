@@ -61,7 +61,7 @@ const rendererOptions = ({ locale = 'en-US' }) => ({
 function getEntryWithId() {
   const mockEntry = {
     fields: {
-      slug: {slug},
+      slug: '',
     },
   };
 
