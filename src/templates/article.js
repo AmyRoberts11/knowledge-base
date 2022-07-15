@@ -5,7 +5,6 @@ import { BLOCKS, INLINES } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import styled from '@emotion/styled';
 import Layout from './layout';
-import ArticleLink from '../components/article-link';
 import WhiteContainer from '../components/white-container';
 import Breadcrumb from '../components/breadcrumb';
 import SEO from '../components/seo';
@@ -18,10 +17,10 @@ const rendererOptions = ({ locale = 'en-US' }) => ({
     [INLINES.ENTRY_HYPERLINK]: (node) => {
         return (
           <a
-          href=''
+          href={node.data.uri}
           target='_blank'
           rel='noopener noreferrer'
-        >{node.data.id}</a>
+        >hello</a>
         );
    },
     [INLINES.HYPERLINK]: (node, children) => {
