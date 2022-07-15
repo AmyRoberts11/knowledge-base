@@ -17,7 +17,7 @@ const rendererOptions = ({ locale = 'en-US' }) => ({
     [INLINES.ENTRY_HYPERLINK]: (node) => {
         return (
           <a
-          href={node.data.uri}
+          href={node.data.target.uri}
           target='_blank'
           rel='noopener noreferrer'
         >hello</a>
