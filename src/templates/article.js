@@ -19,10 +19,12 @@ const rendererOptions = ({ locale = 'en-US' }) => ({
       // If you are using contentful.js client library, the referenced entry is resolved
       // automatically and is available at `node.data.target`.
       return (
-      <ArticleLink
-      url={`/${category.slug}/${article.slug}/`}
-      label={article.title}
-    />);
+        <a
+        href={node.data.uri}
+        target='_blank'
+        rel='noopener noreferrer'
+      >{children}</a>
+      );
     },
 
    [INLINES.HYPERLINK]: (node, children) => {
