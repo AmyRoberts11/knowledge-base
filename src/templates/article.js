@@ -22,7 +22,17 @@ const rendererOptions = ({ locale = 'en-US' }) => ({
              />
            </IframeContainer>
          );
-    } else
+    } 
+    if (node.nodeType = 'entry-hyperlink') {
+      return (
+        <a
+        href={`/${article.category.slug}/${node.data.fields.slug}/`}
+        target='_blank'
+        rel='noopener noreferrer'
+      >{children}</a>
+      );
+ } 
+    else
      return (
        <a
          href={node.data.uri}
