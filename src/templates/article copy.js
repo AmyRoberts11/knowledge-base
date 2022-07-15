@@ -1,7 +1,7 @@
 import React from 'react';
 import is from 'prop-types';
 import { graphql } from 'gatsby';
-import { BLOCKS } from '@contentful/rich-text-types';
+import { BLOCKS, INLINES } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import styled from '@emotion/styled';
 import Layout from './layout';
@@ -9,9 +9,33 @@ import WhiteContainer from '../components/white-container';
 import Breadcrumb from '../components/breadcrumb';
 import SEO from '../components/seo';
 
+
+
 const rendererOptions = ({ locale = 'en-US' }) => ({
   renderNode: {
-    [BLOCKS.EMBEDDED_ASSET]: ({ data }) => {
+   [INLINES.HYPERLINK]: (node, children) => {
+      if (node.data.uri.indexOf('scribehow.com') !== -1) {
+         return (
+           <IframeContainer>
+             <iframe
+               src={node.data.uri}
+               frameBorder="0"
+               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture ; fullscreen"
+             />
+           </IframeContainer>
+         );
+    } else
+     return (
+       <a
+         href={node.data.uri}
+         target='_blank'
+         rel='noopener noreferrer'
+       >{children}</a>
+ 
+     );
+   }, 
+
+ [BLOCKS.EMBEDDED_ASSET]: ({ data }) => {
       // check for assets only
       if (data.target.sys.type !== 'Asset') return;
 
@@ -39,6 +63,20 @@ const ArticleTitle = styled.h1`
     margin-bottom: 20px;
   }
 `;
+
+const IframeContainer = styled.span`
+  padding-bottom: 56.25%; 
+  position: relative; 
+  display: block; 
+  width: 100%;
+
+  > iframe {
+    height: 100%;
+    width: 100%;
+    position: absolute; 
+    top: 0; 
+    left: 0;
+  }`
 
 const ArticleContentContainer = styled.section`
   padding: 32px 94px;
