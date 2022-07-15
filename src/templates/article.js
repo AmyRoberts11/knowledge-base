@@ -14,12 +14,7 @@ import SEO from '../components/seo';
 
 const rendererOptions = ({ locale = 'en-US' }) => ({
   renderNode: {
-
-    [INLINES.ENTRY_HYPERLINK]: (node) => {
-      return `<a href="/${node.data.target.fields.slug}">${node.content[0].value}</a>`;
-  },
-
-   [INLINES.HYPERLINK]: (node, children) => {
+[INLINES.HYPERLINK]: (node, children) => {
       if (node.data.uri.indexOf('scribehow.com') !== -1) {
          return (
            <IframeContainer>
@@ -30,7 +25,17 @@ const rendererOptions = ({ locale = 'en-US' }) => ({
              />
            </IframeContainer>
          );
-    } else
+    }
+    if (node.nodeType = 'entry-hyperlink') {
+      return (
+        <a
+        href='google.com'
+        target='_blank'
+        rel='noopener noreferrer'
+      >Hello!</a>
+      );
+ }
+    else
      return (
        <a
          href={node.data.uri}
